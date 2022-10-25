@@ -1,18 +1,22 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Tweet } from "./tweet"
 
 @Entity({ name: 'users'})
 export class User {
 
     @PrimaryGeneratedColumn('uuid')
-    id: number
+    id: string;
 
     @Column()
-    firstName: string
+    firstName: string;
 
     @Column()
-    lastName: string
+    lastName: string;
 
     @Column()
-    age: number
+    age: number;
+
+    @OneToMany(type => Tweet, tweet => tweet.user)
+    tweets: Promise<Tweet[]>;
 
 }
