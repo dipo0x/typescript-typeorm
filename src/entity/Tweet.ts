@@ -1,9 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
 import { User } from "./User"
 
 @Entity({ name: 'tweets'})
 export class Tweet {
-
     @PrimaryGeneratedColumn('uuid')
     id: string
 
@@ -13,7 +12,6 @@ export class Tweet {
     @Column({ type: 'varchar', length: '300'})
     content: string
 
-    @ManyToOne(type => User, user => user.tweets)
+    @ManyToOne((type) => User, (user) => user.tweets)
     user: Promise<User>;
-
 }
