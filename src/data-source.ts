@@ -14,5 +14,4 @@ export const AppDataSource = new DataSource({
     synchronize: true,
     logging: false,
     entities: [User, Tweet],
-    subscribers: [],
 })

@@ -1,10 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
+import { Entity, ObjectIdColumn, ObjectID, Column, ManyToOne } from "typeorm"
 import { User } from "./User"
 
 @Entity({ name: 'tweets'})
 export class Tweet {
-    @PrimaryGeneratedColumn('uuid')
-    id: string
+    @ObjectIdColumn()
+    _id: ObjectID;
 
     @Column({ type: 'varchar', length: '80'})
     title: string

@@ -1,9 +1,10 @@
 import { getRepository } from "typeorm"
 import { User } from "./entity/User"
 import { Tweet } from "./entity/Tweet"
+import { AppDataSource } from "./data-source"
 
 export const Bootstrap = async () => {
-	const userRepo = getRepository(User);
+	const userRepo = AppDataSource.getRepository(User);
 	const user = userRepo.create({ 
 		firstName: 'Oladipo', 
 		lastName: 'Adesiyan', 
@@ -14,7 +15,7 @@ export const Bootstrap = async () => {
 	})
 	console.log("New User Saved", user);
 
-	const tweetRepo = getRepository(Tweet);
+	const tweetRepo = AppDataSource.getRepository(Tweet);
 	const tweet = new Tweet();
 	tweet.title = 'I finally got a new job'
 	tweet.content = "Yo!, y'all, I finally got a job at Apple!"
@@ -23,7 +24,7 @@ export const Bootstrap = async () => {
 }
 
 export const find = async () => {
-	const userRepo = getRepository(User);
+	const userRepo = AppDataSource.getRepository(User);
 
 	const user = await userRepo.findOne({ where: { firstName: "Oladipo" } }).catch((err) => {
 		console.log(err)

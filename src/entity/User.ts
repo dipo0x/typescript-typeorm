@@ -1,11 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
+import { Entity, ObjectIdColumn, ObjectID, Column, OneToMany } from "typeorm"
 import { Tweet } from "./Tweet"
 
 @Entity({ name: 'users'})
 export class User {
 
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+    @ObjectIdColumn()
+    _id: ObjectID;
 
     @Column()
     firstName: string;
